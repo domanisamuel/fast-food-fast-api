@@ -47,6 +47,16 @@ def get_orders():
     return jsonify({'orders': orders})
 
 # Fetch a specific order
+@app.route('/orders/<int:order_id>', methods=['GET'])
+def get_order_by_id(order_id):
+    required_order = []
+    for order in orders:
+        if order['order_id'] == order_id:
+            required_order.append(order)
+    if len(required_order) == 0:
+        abort(404) 
+    
+    return jsonify({'order': required_order[0]})
 
 # Place a new order.
 
