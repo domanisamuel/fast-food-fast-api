@@ -42,12 +42,12 @@ orders = [
 ]
 
 # Get all the orders
-@app.route('/orders', methods=['GET'])
+@app.route('/v1/orders', methods=['GET'])
 def get_orders():
     return jsonify({'orders': orders})
 
 # Fetch a specific order
-@app.route('/orders/<int:order_id>', methods=['GET'])
+@app.route('/v1/orders/<int:order_id>', methods=['GET'])
 def get_order_by_id(order_id):
     required_order = []
     for order in orders:
@@ -59,7 +59,7 @@ def get_order_by_id(order_id):
     return jsonify({'order': required_order[0]})
 
 # Place a new order.
-@app.route('/orders', methods=['POST'])
+@app.route('/v1/orders', methods=['POST'])
 def place_order():
     if not request.json or not 'summary' in request.json:
         abort(404)
@@ -76,9 +76,22 @@ def place_order():
     orders.append(order[0])
     return jsonify({'order': order}), 201
 
-
-
 # Update the status of an order.
+@app.route('/v1/orders/<int:order_id>', methods=['PUT'])
+def update_order_status(order_id):
+    required_order = []
+    for order in orders:
+        if order['order_id'] == order_id:
+            required_order.append(order)
+    if len(required_order) == 0:
+        abort(404) 
+    
+    return jsonify({'order': required_order[0]})
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': not_found}), 404)
 
 if __name__ == '__main__':
     app.run(debug=True)
