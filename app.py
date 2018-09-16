@@ -59,6 +59,24 @@ def get_order_by_id(order_id):
     return jsonify({'order': required_order[0]})
 
 # Place a new order.
+@app.route('/orders', methods=['POST'])
+def place_order():
+    if not request.json or not 'summary' in request.json:
+        abort(404)
+    
+    order = [
+        {
+           "order_id": orders[-1]['order_id']+1,
+            "customer_name": request.json['Name: '],
+            "customer_phone":request.json['food: '],
+            'acccepted': True
+        }
+    ]
+
+    orders.append(order[0])
+    return jsonify({'order': order}), 201
+
+
 
 # Update the status of an order.
 
