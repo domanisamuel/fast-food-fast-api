@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, make_response
 
 app = Flask(__name__)
 
@@ -41,9 +41,16 @@ orders = [
     }
 ]
 
-@app.route('/', methods=['GET'])
-def returnAll():
+# Get all the orders
+@app.route('/orders', methods=['GET'])
+def get_orders():
     return jsonify({'orders': orders})
+
+# Fetch a specific order
+
+# Place a new order.
+
+# Update the status of an order.
 
 if __name__ == '__main__':
     app.run(debug=True)
