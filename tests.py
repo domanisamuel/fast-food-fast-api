@@ -26,4 +26,6 @@ class Testapp(unittest.TestCase):
     def test_get_orders(self):
         response = self.client().post('http://localhost:5000/v1/orders')
         self.assertEqual(orders, response.data)
-    
+
+    if __name__ == '__main__':
+        unittest.main()
