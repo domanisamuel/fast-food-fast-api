@@ -21,5 +21,9 @@ class Testapp(unittest.TestCase):
     def test_place_order(self):
         response = self.client().post('http://localhost:5000/v1/orders')
         self.assertEqual(orders, response.data)
-
+    
+    #test for update order
+    def test_get_orders(self):
+        response = self.client().post('http://localhost:5000/v1/orders')
+        self.assertEqual(orders, response.data)
     
