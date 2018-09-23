@@ -8,6 +8,8 @@ from flask_restful import Resource
 
 orders = []
 
+
+
 class Orders(Resource):
     #post an order
     def post(self):
@@ -18,15 +20,12 @@ class Orders(Resource):
         order_data['food_id'] = len(orders)+1
         order_data['status'] = data['status']
         orders.append(order_data)
-        return {'orders': order_data}, 201
-
-    #get a list of all orders
+        return {'orders': order_data}, 201    #get a list of all orders
     def get(self):
         if len(orders) == 0:
             return {'message': 'Not found'}, 404
-        return {'orders': orders}, 200
-
-
+        return {'orders': orders}, 20
+      
 class Order(Resource):
     #get a specific order
     def get(self, order_id):
