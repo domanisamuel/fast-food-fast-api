@@ -24,9 +24,8 @@ class Orders(Resource):
     def get(self):
         if len(orders) == 0:
             return {'message': 'Not found'}, 404
-        return {'orders': orders}, 200
-
-        
+        return {'orders': orders}, 20
+      
 class Order(Resource):
     #get a specific order
     def get(self, order_id):
