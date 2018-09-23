@@ -26,7 +26,6 @@ class Orders(Resource):
             return {'message': 'Not found'}, 404
         return {'orders': orders}, 200
 
-    
 
 class Order(Resource):
     #get a specific order
