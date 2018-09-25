@@ -9,7 +9,7 @@ from flask_restful import Resource
 orders = []
 
 class Orders(Resource):
-    #post an order
+    """post an order"""
     def post(self):
         order_data = {}
         data = request.get_json()
@@ -20,24 +20,24 @@ class Orders(Resource):
         orders.append(order_data)
         return {'orders': order_data}, 201
 
-    #get a list of all orders
+    """get a list of all orders"""
     def get(self):
         if len(orders) == 0:
-            return {'message': 'Not found'}, 404
+            return {'message': 'No orders Available. Try to place an order using post'}, 404
         return {'orders': orders}, 200
 
     
 
 class Order(Resource):
-    #get a specific order
+    """get a specific order"""
     def get(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
         if order:
             return {'order': order[0]},200
         if not order:
-            return {'message': 'Order not found'}, 404
+            return {'message': 'No specific order found'}, 404
 
-    #update a specific order (PUT)
+   """ update a specific order (PUT)"""
     def put(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
         if  order:
@@ -48,8 +48,8 @@ class Order(Resource):
             order[0]['status'] = data['status']
             return {'order': order[0]}, 200
         if not order:
-            return {'message': 'order not updated'}, 404
-
+            return {'message': 'Your order did not update'}, 404
+    """delete orders"""
     def delete(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
         if order:

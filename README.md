@@ -62,3 +62,6 @@ Run the application:
 To run tests:
 
 `$ pytest`
+
+
+[![Coverage Status](https://coveralls.io/repos/github/domanisamuel/fast-food-fast-api/badge.svg?branch=master)](https://coveralls.io/github/domanisamuel/fast-food-fast-api?branch=master)
