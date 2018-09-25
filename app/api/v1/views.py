@@ -33,22 +33,23 @@ class Order(Resource):
     def get(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
         if order:
-            return {'order': order[0]},200
-        if not order:
+            return {'order': order[0]},20o
+        else:
             return {'message': 'No specific order found'}, 404
 
    """ update a specific order (PUT)"""
     def put(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
-        if  order:
+        if order:
             data = request.get_json()
             order[0]['food'] = data['food']
             order[0]['quantity'] = data['quantity']
             order[0]['food_id'] = data['food_id']
             order[0]['status'] = data['status']
             return {'order': order[0]}, 200
-        if not order:
+        else:
             return {'message': 'Your order did not update'}, 404
+            
     """delete orders"""
     def delete(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
