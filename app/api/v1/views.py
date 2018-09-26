@@ -9,7 +9,7 @@ from flask_restful import Resource
 orders = []
 
 class Orders(Resource):
-    """post an order"""
+    # """post an order"""
     def post(self):
         order_data = {}
         data = request.get_json()
@@ -20,7 +20,7 @@ class Orders(Resource):
         orders.append(order_data)
         return {'orders': order_data}, 201
 
-    """get a list of all orders"""
+    # """get a list of all orders"""
     def get(self):
         if len(orders) == 0:
             return {'message': 'No orders Available. Try to place an order using post'}, 404
@@ -31,28 +31,28 @@ class Orders(Resource):
 class Order(Resource):
     """get a specific order"""
     def get(self, order_id):
-        order = [order for order in orders if order['id'] == order_id]
+        order = [order for order in orders if order['food_id'] == order_id]
         if order:
-            return {'order': order[0]},20o
+            return {'order': order[0]},200
         else:
             return {'message': 'No specific order found'}, 404
 
-   """ update a specific order (PUT)"""
+    # update a specific order
     def put(self, order_id):
-        order = [order for order in orders if order['id'] == order_id]
+        order = [order for order in orders if order['food_id'] == order_id]
         if order:
             data = request.get_json()
             order[0]['food'] = data['food']
             order[0]['quantity'] = data['quantity']
-            order[0]['food_id'] = data['food_id']
+            # order[0]['food_id'] = data['food_id']
             order[0]['status'] = data['status']
             return {'order': order[0]}, 200
         else:
             return {'message': 'Your order did not update'}, 404
             
-    """delete orders"""
+    #delete orders
     def delete(self, order_id):
-        order = [order for order in orders if order['id'] == order_id]
+        order = [order for order in orders if order['food_id'] == order_id]
         if order:
             del orders[0]
             return {'orders': orders}, 204
