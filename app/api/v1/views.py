@@ -36,8 +36,7 @@ class Order(Resource):
             return {'order': order[0]},200
         else:
             return {'message': 'No specific order found'}, 404
-
-#    """update a specific order (PUT)"""
+          
     def put(self, order_id):
         order = [order for order in orders if order['food_id'] == order_id]
         if  order:
@@ -46,13 +45,12 @@ class Order(Resource):
             data = request.get_json()
             order[0]['food'] = data['food']
             order[0]['quantity'] = data['quantity']
-            order[0]['food_id'] = data['food_id']
+            # order[0]['food_id'] = data['food_id']
             order[0]['status'] = data['status']
             return {'order': order[0]}, 200
         else:
             return {'message': 'Your order did not update'}, 404
 
-    # """delete orders"""
     def delete(self, order_id):
         order = [order for order in orders if order['food_id'] == order_id]
         if order:
