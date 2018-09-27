@@ -6,8 +6,8 @@ install:
   - pip install coveralls codecov
 
 script:
-  - nosetests --with-coverage --cover -package= test_app.py
+    - python -m pytest --cov-report term-missing --cov=app
 
 after_succes:
   - coveralls
-  - codecov --token=
+  - codecov --token=BODDIjg8Czi9JjFyN7ueh65sLqSMOTnGz

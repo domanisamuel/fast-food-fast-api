@@ -10,5 +10,5 @@ api_endpoint = Api(app)
 
 from app.api.v1.views import Orders, Order
 
-api_endpoint.add_resource(Orders, '/v1/orders')
-api_endpoint.add_resource(Order, '/v1/order/<int:order_id>')
+api_endpoint.add_resource(Orders, '/api/v1/orders')
+api_endpoint.add_resource(Order, '/api/v1/order/<int:order_id>')
