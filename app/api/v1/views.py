@@ -8,6 +8,7 @@ from flask_restful import Resource
 
 orders = []
 
+
 class Orders(Resource):
     # """post an order"""
     def post(self):
@@ -30,7 +31,7 @@ class Orders(Resource):
 class Order(Resource):
     # """get a specific order"""
     def get(self, order_id):
-        order = [order for order in orders if order['id'] == order_id]
+        order = [order for order in orders if order['food_id'] == order_id]
         if order:
             return {'order': order[0]},200
         else:
@@ -38,7 +39,9 @@ class Order(Resource):
 
 #    """update a specific order (PUT)"""
     def put(self, order_id):
-        order = [order for order in orders if order['id'] == order_id]
+        order = [order for order in orders if order['food_id'] == order_id]
+        if  order:
+          order = [order for order in orders if order['id'] == order_id]
         if order:
             data = request.get_json()
             order[0]['food'] = data['food']
@@ -51,7 +54,7 @@ class Order(Resource):
 
     # """delete orders"""
     def delete(self, order_id):
-        order = [order for order in orders if order['id'] == order_id]
+        order = [order for order in orders if order['food_id'] == order_id]
         if order:
             del orders[0]
             return {'orders': orders}, 204
