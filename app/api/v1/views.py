@@ -26,7 +26,6 @@ class Orders(Resource):
             return {'message': 'No orders Available. Try to place an order using post'}, 404
         return {'orders': orders}, 200
 
-    
 
 class Order(Resource):
     """get a specific order"""
@@ -49,7 +48,7 @@ class Order(Resource):
             return {'order': order[0]}, 200
         else:
             return {'message': 'Your order did not update'}, 404
-            
+
     """delete orders"""
     def delete(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
