@@ -8,6 +8,7 @@ from flask_restful import Resource
 
 orders = []
 
+
 class Orders(Resource):
     # """post an order"""
     def post(self):
@@ -38,6 +39,8 @@ class Order(Resource):
           
     def put(self, order_id):
         order = [order for order in orders if order['food_id'] == order_id]
+        if  order:
+          order = [order for order in orders if order['id'] == order_id]
         if order:
             data = request.get_json()
             order[0]['food'] = data['food']
