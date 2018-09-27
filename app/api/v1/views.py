@@ -26,18 +26,16 @@ class Orders(Resource):
             return {'message': 'No orders Available. Try to place an order using post'}, 404
         return {'orders': orders}, 200
 
-    
 
 class Order(Resource):
-    """get a specific order"""
+    # """get a specific order"""
     def get(self, order_id):
         order = [order for order in orders if order['food_id'] == order_id]
         if order:
             return {'order': order[0]},200
         else:
             return {'message': 'No specific order found'}, 404
-
-    # update a specific order
+          
     def put(self, order_id):
         order = [order for order in orders if order['food_id'] == order_id]
         if order:
@@ -49,8 +47,7 @@ class Order(Resource):
             return {'order': order[0]}, 200
         else:
             return {'message': 'Your order did not update'}, 404
-            
-    #delete orders
+
     def delete(self, order_id):
         order = [order for order in orders if order['food_id'] == order_id]
         if order:
