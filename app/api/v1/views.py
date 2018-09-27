@@ -32,11 +32,11 @@ class Order(Resource):
     def get(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
         if order:
-            return {'order': order[0]},20o
+            return {'order': order[0]},200
         else:
             return {'message': 'No specific order found'}, 404
 
-   """ update a specific order (PUT)"""
+   """update a specific order (PUT)"""
     def put(self, order_id):
         order = [order for order in orders if order['id'] == order_id]
         if order:
