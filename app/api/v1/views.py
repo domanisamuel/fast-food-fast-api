@@ -20,7 +20,7 @@ class Orders(Resource):
         orders.append(order_data)
         return {'orders': order_data}, 201
 
-    # """get a list of all orders"""
+    #get a list of all orders
     def get(self):
         if len(orders) == 0:
             return {'message': 'No orders Available. Try to place an order using post'}, 404
