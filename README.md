@@ -2,6 +2,20 @@
 
 Fast-Food-Fast is an online food delievery app
 
+- The API for the Fast Food Fast App that allows for fetching and chenging the status of an order
+
+- It consist
+`GET /api/v1/order/<int:order_id>` to fetch a single order
+`GET /api/v1/orders` to fetch all orders
+`PUT /api/v1/order/<int:order_id>` to change a specific order
+
+| Endpoint | Functionality | 
+|----------|---------------|
+| GET /api/v1/order  | Get all the orders.|
+| GET /api/v1/orders/ | Fetch a specific order |
+| POST /api/v1/orders | Place a new order.|
+| PUT /api/v1/orders/<orderId> | Update the status of an order.|
+
 ### Prerequisites
 Python3 (A programming language)
 Flask (A Python microframework)
@@ -62,3 +76,6 @@ Run the application:
 To run tests:
 
 `$ pytest`
+
+
+[![Coverage Status](https://coveralls.io/repos/github/domanisamuel/fast-food-fast-api/badge.svg?branch=master)](https://coveralls.io/github/domanisamuel/fast-food-fast-api?branch=master)
