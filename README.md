@@ -9,6 +9,13 @@ Fast-Food-Fast is an online food delievery app
 `GET /api/v1/orders` to fetch all orders
 `PUT /api/v1/order/<int:order_id>` to change a specific order
 
+| Endpoint | Functionality | 
+|----------|---------------|
+| GET /api/v1/order  | Get all the orders.|
+| GET /api/v1/orders/ | Fetch a specific order |
+| POST /api/v1/orders | Place a new order.|
+| PUT /api/v1/orders/<orderId> | Update the status of an order.|
+
 ### Prerequisites
 Python3 (A programming language)
 Flask (A Python microframework)
